@@ -6,12 +6,12 @@ DUPES_PICKLE=$DATA_BASE/lsh_0.4/dupes/output/dupes.pickle
 
 WORKERS=2
 
-python $REPO_BASE/zyda/src/connected_components/generate_connected_components.py \
+python $REPO_BASE/zyda/connected_components/generate_connected_components.py \
     --input-dir $INPUT_DIR \
     --out-file $CC_PICKLE \
     --workers $WORKERS
 
-python $REPO_BASE/zyda/src/connected_components/generate_duplicates_indices.py \
+python $REPO_BASE/zyda/connected_components/generate_indices_to_remove.py \
     --input-file $CC_PICKLE \
     --out-file $DUPES_PICKLE \
     --ranking \

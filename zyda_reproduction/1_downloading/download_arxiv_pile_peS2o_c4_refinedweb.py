@@ -2,6 +2,7 @@ import os
 import datasets
 
 DATA_BASE = os.environ.get("DATA_BASE")
+NUM_PROC = int(os.environ.get("NUM_PROC", 1))
 
 data = datasets.load_dataset(
     "ArtifactAI/arxiv_s2orc_parsed",
@@ -9,7 +10,8 @@ data = datasets.load_dataset(
     download_config=datasets.DownloadConfig(
         num_proc=8,
         resume_download=True,
-    )
+    ),
+    num_proc=NUM_PROC,
 )
 print(data)
 data.save_to_disk(os.path.join(DATA_BASE, "raw/arxiv"))
@@ -20,7 +22,8 @@ data = datasets.load_dataset(
     download_config=datasets.DownloadConfig(
         num_proc=8,
         resume_download=True,
-    )
+    ),
+    num_proc=NUM_PROC,
 )
 print(data)
 data.save_to_disk(os.path.join(DATA_BASE, "raw/pile-uncopyrighted"))
@@ -32,7 +35,8 @@ data = datasets.load_dataset(
     download_config=datasets.DownloadConfig(
         num_proc=8,
         resume_download=True,
-    )
+    ),
+    num_proc=NUM_PROC,
 )
 print(data)
 data.save_to_disk(os.path.join(DATA_BASE, "raw/peS2o"))
@@ -43,7 +47,8 @@ data = datasets.load_dataset(
     download_config=datasets.DownloadConfig(
         num_proc=8,
         resume_download=True,
-    )
+    ),
+    num_proc=NUM_PROC,
 )
 print(data)
 data.save_to_disk(os.path.join(DATA_BASE, "raw/c4-en"))
@@ -54,7 +59,8 @@ data = datasets.load_dataset(
     download_config=datasets.DownloadConfig(
         num_proc=8,
         resume_download=True,
-    )
+    ),
+    num_proc=NUM_PROC,
 )
 print(data)
 data.save_to_disk(os.path.join(DATA_BASE, "raw/refinedweb"))

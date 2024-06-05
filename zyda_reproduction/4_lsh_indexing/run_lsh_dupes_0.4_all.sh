@@ -7,7 +7,7 @@ RANGE=4
 # Use --nodes and --node-rank for ditributing a job among multiple compute nodes.
 # We split our job across 8 nodes with 2TB of RAM. Peak RAM usge was a bit more than 1TB.
 
-python $REPO_BASE/zyda/src/lsh_index/build_lsh.py \
+python $REPO_BASE/zyda/lsh_minhash/build_lsh_index.py \
     --load-path \
         $DATA_BASE/minhash/pile-uncopyrighted \
         $DATA_BASE/minhash/c4-en \

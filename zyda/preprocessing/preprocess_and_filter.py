@@ -29,6 +29,8 @@ nltk.download('punkt')
 import logging
 logging.basicConfig(format='%(asctime)s: %(message)s', level=logging.INFO)
 
+REPO_BASE = os.environ.get("REPO_BASE", "")
+
 TOKENIZERS = {
     "neox": transformers.AutoTokenizer.from_pretrained("EleutherAI/gpt-neox-20b"),
 }
@@ -39,10 +41,10 @@ def read_json_file(fname):
     return result_dict["words"]
 
 WORD_LISTS = {
-    "profanity_word_list.json": read_json_file("profanity_word_list.json"),
-    "sexual_word_list.json": read_json_file("sexual_word_list.json"),
-    "zh_pornsignals.json": read_json_file("zh_pornsignals.json"),
-    "cursed_substrings.json": read_json_file("cursed_substrings.json"),
+    "profanity_word_list.json": read_json_file(os.path.join(REPO_BASE, "zyda/preprocessing/profanity_word_list.json")),
+    "sexual_word_list.json": read_json_file(os.path.join(REPO_BASE, "zyda/preprocessing/sexual_word_list.json")),
+    "zh_pornsignals.json": read_json_file(os.path.join(REPO_BASE, "zyda/preprocessing/zh_pornsignals.json")),
+    "cursed_substrings.json": read_json_file(os.path.join(REPO_BASE, "zyda/preprocessing/cursed_substrings.json")),
 }
 
 PATTERNS = ["xml", "<?xml version=", "lorem ipsum", "https://", "<", ">", "\":", "www."]
@@ -152,19 +154,11 @@ def preprocess(
             word_list_counts[word_list_key] = count_word_list(text, word_list)
         features["word_list_counts"].append(word_list_counts)
 
-        feature_key = "pii_count"
-        if feature_key not in batch.keys():
-            features[feature_key].append(count_PII_items(text))
+        tokenized = TOKENIZERS["neox"].encode(text)
+        features["n_tokens_neox"].append(len(tokenized))
 
-        feature_key = "n_tokens_neox"
-        if feature_key not in batch.keys():
-            tokenized = TOKENIZERS["neox"].encode(text)
-            features[feature_key].append(len(tokenized))
-
-        feature_key = "n_words"
-        if feature_key not in batch.keys():
-            words = get_normalized_words(text)
-            features[feature_key].append(len(words))
+        words = get_normalized_words(text)
+        features["n_words"].append(len(words))
 
         transformed_text = transform(text)
         features["transformed_text"].append(transformed_text)
@@ -215,6 +209,7 @@ if __name__ == '__main__':
         ds_shard = dataset.shard(num_shards=num_shards, index=i, contiguous=True)
         logging.info(f"Cache cleaned: {ds_shard.cleanup_cache_files()}")
 
+        logging.info(f"Preprocessing...")
         ds_shard_post = ds_shard.map(
             lambda batch, indices: preprocess(batch, indices, shard=i, offset=offset, key=args.key, name=args.name),
             batched=True,
@@ -226,6 +221,7 @@ if __name__ == '__main__':
         if "starcoder" in args.name:
             logging.info(f"Starcoder detected: skipping filtering")
         else:
+            logging.info(f"Filtering...")
             ds_shard_post = ds_shard_post.filter(lambda row: filter(row), num_proc=args.num_proc)
 
         offset += len(ds_shard_post)

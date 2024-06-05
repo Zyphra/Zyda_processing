@@ -6,7 +6,7 @@ DATASET=refinedweb
 if test -d $IN/$DATASET; then
     echo Processing $DATASET
     mkdir -p $OUT/$DATASET
-    python $REPO_BASE/scripts/5_generating_final_dataset/convert_jsonls_to_parquet.py \
+    python $REPO_BASE/zyda_reproduction/6_generating_final_dataset/convert_jsonls_to_parquet.py \
         --input-folder $IN/$DATASET \
         --output-folder $OUT/$DATASET \
         --num-proc $NUM_PROC \
@@ -17,7 +17,7 @@ DATASET=arxiv
 if test -d $IN/$DATASET; then
     echo Processing $DATASET
     mkdir -p $OUT/$DATASET
-    python $REPO_BASE/scripts/5_generating_final_dataset/convert_jsonls_to_parquet.py \
+    python $REPO_BASE/zyda_reproduction/6_generating_final_dataset/convert_jsonls_to_parquet.py \
         --input-folder $IN/$DATASET \
         --output-folder $OUT/$DATASET \
         --num-proc $NUM_PROC \
@@ -28,7 +28,7 @@ DATASET=peS2o
 if test -d $IN/$DATASET; then
     echo Processing $DATASET
     mkdir -p $OUT/$DATASET
-    python $REPO_BASE/scripts/5_generating_final_dataset/convert_jsonls_to_parquet.py \
+    python $REPO_BASE/zyda_reproduction/6_generating_final_dataset/convert_jsonls_to_parquet.py \
         --input-folder $IN/$DATASET \
         --output-folder $OUT/$DATASET \
         --num-proc $NUM_PROC \
@@ -39,7 +39,7 @@ DATASET=c4-en
 if test -d $IN/$DATASET; then
     echo Processing $DATASET
     mkdir -p $OUT/$DATASET
-    python $REPO_BASE/scripts/5_generating_final_dataset/convert_jsonls_to_parquet.py \
+    python $REPO_BASE/zyda_reproduction/6_generating_final_dataset/convert_jsonls_to_parquet.py \
         --input-folder $IN/$DATASET \
         --output-folder $OUT/$DATASET \
         --num-proc $NUM_PROC \
@@ -50,7 +50,7 @@ DATASET=pile-uncopyrighted
 if test -d $IN/$DATASET; then
     echo Processing $DATASET
     mkdir -p $OUT/$DATASET
-    python $REPO_BASE/scripts/5_generating_final_dataset/convert_jsonls_to_parquet.py \
+    python $REPO_BASE/zyda_reproduction/6_generating_final_dataset/convert_jsonls_to_parquet.py \
         --input-folder $IN/$DATASET \
         --output-folder $OUT/$DATASET \
         --num-proc $NUM_PROC \
@@ -61,7 +61,7 @@ DATASET=slimpajama
 if test -d $IN/$DATASET; then
     echo Processing $DATASET
     mkdir -p $OUT/$DATASET
-    python $REPO_BASE/scripts/5_generating_final_dataset/convert_jsonls_to_parquet.py \
+    python $REPO_BASE/zyda_reproduction/6_generating_final_dataset/convert_jsonls_to_parquet.py \
         --input-folder $IN/$DATASET \
         --output-folder $OUT/$DATASET \
         --num-proc $NUM_PROC \
@@ -72,7 +72,7 @@ DATASET=starcoder-languages
 if test -d $IN/$DATASET; then
     echo Processing $DATASET
     mkdir -p $OUT/$DATASET
-    python $REPO_BASE/scripts/5_generating_final_dataset/convert_jsonls_to_parquet.py \
+    python $REPO_BASE/zyda_reproduction/6_generating_final_dataset/convert_jsonls_to_parquet.py \
         --input-folder $IN/$DATASET \
         --output-folder $OUT/$DATASET \
         --num-proc $NUM_PROC \
@@ -83,7 +83,7 @@ DATASET=starcoder-git-commits-cleaned
 if test -d $IN/$DATASET; then
     echo Processing $DATASET
     mkdir -p $OUT/$DATASET
-    python $REPO_BASE/scripts/5_generating_final_dataset/convert_jsonls_to_parquet.py \
+    python $REPO_BASE/zyda_reproduction/6_generating_final_dataset/convert_jsonls_to_parquet.py \
         --input-folder $IN/$DATASET \
         --output-folder $OUT/$DATASET \
         --num-proc $NUM_PROC \
@@ -94,7 +94,7 @@ DATASET=starcoder-jupyter-structured-clean-dedup
 if test -d $IN/$DATASET; then
     echo Processing $DATASET
     mkdir -p $OUT/$DATASET
-    python $REPO_BASE/scripts/5_generating_final_dataset/convert_jsonls_to_parquet.py \
+    python $REPO_BASE/zyda_reproduction/6_generating_final_dataset/convert_jsonls_to_parquet.py \
         --input-folder $IN/$DATASET \
         --output-folder $OUT/$DATASET \
         --num-proc $NUM_PROC \
@@ -105,7 +105,7 @@ DATASET=starcoder-github-issues-filtered-structured
 if test -d $IN/$DATASET; then
     echo Processing $DATASET
     mkdir -p $OUT/$DATASET
-    python $REPO_BASE/scripts/5_generating_final_dataset/convert_jsonls_to_parquet.py \
+    python $REPO_BASE/zyda_reproduction/6_generating_final_dataset/convert_jsonls_to_parquet.py \
         --input-folder $IN/$DATASET \
         --output-folder $OUT/$DATASET \
         --num-proc $NUM_PROC \

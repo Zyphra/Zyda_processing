@@ -9,8 +9,7 @@ import logging
 logging.basicConfig(format='%(asctime)s: %(message)s', level=logging.INFO)
 
 
-
-def save_shards_to_parquet(data, out_folder, total, indices):
+def save_partitions_to_parquet(data, out_folder, total, indices):
     for idx in indices:
         shard = data.shard(num_shards=total, index=idx, contiguous=True)
         parquet_name = f"train-{idx:05d}-of-{total:05d}.parquet"
@@ -44,12 +43,12 @@ def convert_to_parquet(args):
     ds = ds.shuffle()
     
     processes = []
-    shards = args.shards
+    partitions = args.partitions
     out_folder = args.output_folder
-    logging.info(f"Saving {shards} parquets to {out_folder}")
-    indices = [list(x) for x in more_itertools.divide(args.num_proc, range(shards))]
+    logging.info(f"Saving {partitions} parquets to {out_folder}")
+    indices = [list(x) for x in more_itertools.divide(args.num_proc, range(partitions))]
     for process_id in range(args.num_proc):
-        p = mp.Process(target=save_shards_to_parquet, args=(ds, out_folder, shards, indices[process_id]))
+        p = mp.Process(target=save_partitions_to_parquet, args=(ds, out_folder, partitions, indices[process_id]))
         processes.append(p)
         p.start()
     for p in processes:

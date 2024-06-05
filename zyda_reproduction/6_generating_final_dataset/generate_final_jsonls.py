@@ -43,7 +43,7 @@ DATASETS_NAMES = [
     "starcoder-git-commits-cleaned",
 ]
 DATA_BASE = os.environ.get("DATA_BASE")
-PATHS = {name: os.path.join(DATA_BASE, name) for name in DATASETS_NAMES}
+PATHS = {name: os.path.join(DATA_BASE, f"processed/{name}") for name in DATASETS_NAMES}
 DATASETS = {name: ComboDataset(path) for name, path in PATHS.items() if os.path.exists(path)}
 
 
@@ -124,7 +124,7 @@ def generate_datasets(args):
             text_key = "content"
             logging.info(f"Starcoder detected: using {text_key} as a key")
         
-        out_folder = os.path.join(args.out_folder, "jsonls", ds_name)            
+        out_folder = os.path.join(args.out_folder, ds_name)            
         partitions = args.jsonl_partitions
         processes = []
         logging.info(f"Saving {partitions} jsonls to {out_folder}")
