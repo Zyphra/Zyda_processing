@@ -13,6 +13,7 @@
 # limitations under the License.
 
 from collections import defaultdict
+from typing import Dict, List
 import os
 import argparse
 import re
@@ -109,7 +110,7 @@ def count_PII_items(input_string):
 def transform(
     text: str,
     chars_with_thresholds: dict =CHARS_FOR_TRANSFORM,
-):
+) -> str:
     new_text = text
     for char, threshold in chars_with_thresholds.items():
         pattern = char * threshold + '+'
@@ -128,7 +129,7 @@ def preprocess(
     offset: int,
     patterns: list = PATTERNS,
     word_lists: dict = WORD_LISTS,
-):
+) -> Dict[str, List]:
     texts = batch[key]
     features = defaultdict(list)
     for ind, text in zip(indices, texts):

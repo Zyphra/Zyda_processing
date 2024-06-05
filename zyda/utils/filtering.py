@@ -59,6 +59,11 @@ def filter(
     word_lists_with_max_counts: Dict[str, int] = WORD_LISTS_WITH_MAX_COUNTS,
     word_lists_with_max_fractions: Dict[str, float] = WORD_LISTS_WITH_MAX_FRACTIONS,
 ) -> bool:
+    """
+    Given a row, decided whether to remove or keep it.
+    Returns True is the row to be kept, False otherwise.
+    """
+
     if len(row[key]) < min_length:
         return False
     

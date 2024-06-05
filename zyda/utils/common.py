@@ -19,6 +19,7 @@ import tqdm
 import logging
 logging.basicConfig(format='%(asctime)s: %(message)s', level=logging.INFO)
 
+
 class ComboDataset:
     def __init__(self, path: str):
         self.path = path
@@ -37,6 +38,6 @@ class ComboDataset:
         self.ds = ds
         logging.info(ds)
 
+
 def ensure_directory_exists(filename: str):
     os.makedirs(os.path.dirname(filename), exist_ok = True)
-

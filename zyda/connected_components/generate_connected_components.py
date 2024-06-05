@@ -43,7 +43,7 @@ def construct_graph(set_of_duplicate_pairs: set) -> Tuple[nk.Graph, Dict[str, in
     return G, mapper
 
 
-def find_connected_components(G):
+def find_connected_components(G: nk.Graph):
     cc = nk.components.ConnectedComponents(G)
     cc.run()
     return cc.getComponents(), cc.numberOfComponents()
