@@ -39,5 +39,4 @@ setuptools.setup(
         "datasets==2.18.0",
     ],
     python_requires=">=3.10",
-        
 )

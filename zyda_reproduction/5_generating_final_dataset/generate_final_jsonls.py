@@ -12,8 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from typing import Dict, Optional
-from collections import defaultdict
 import argparse
 import pickle
 import os
@@ -21,11 +19,10 @@ import tqdm
 import random
 import gc
 import json
-import more_itertools
 import multiprocessing as mp
 
 from zyda.utils.common import ComboDataset, ensure_directory_exists
-from zyda.utils.filtering import filter, FILTERING_FEATURES
+from zyda.utils.filtering import FILTERING_FEATURES
 
 import logging
 logging.basicConfig(format='%(asctime)s: %(message)s', level=logging.INFO)
