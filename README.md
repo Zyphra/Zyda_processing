@@ -37,7 +37,7 @@ Scripts for downloading component datasets are in `zyda_reproduction/1_downloadi
 
 All the scripts save downloaded datasets into separate folders in HuggingFace format in `$DATA_BASE/raw/<component name>` folders.
 
-Downloading most components from HuggingFace is straighforward: run `download_arxiv_pile_peS2o_c4_refinedweb copy.py` and `download_refinedweb.py` scripts.
+Downloading most components from HuggingFace is straighforward: run `download_arxiv_pile_peS2o_c4_refinedweb.py` and `download_refinedweb.py` scripts.
 
 However, we had to apply special handling to SlimPajama and StarCoder:
 1. Clone their HuggingFace repositories locally
