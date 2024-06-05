@@ -52,11 +52,11 @@ Run all the bash scripts in this folder.
 This stage performs the following:
 1. Generation of filtering features
 2. Transformation of the text
-3. Filtering of the documents, default filtering parameters can be found in `zyda/utils/filtering.py`
+3. Filtering of the documents (default filtering parameters can be found in `zyda/utils/filtering.py`)
 4. Splitting of resultant datasets to shards, and saving them in `$DATA_BASE/processed/<component name>/shard_<id>` folders in HuggingFace format
 
 ### 3. Computing minhashes
-Scripts for computing minhash signatures in `zyda_reproduction/3_minhashing`.
+Scripts for computing minhash signatures are in `zyda_reproduction/3_minhashing`.
 
 Run all the bash scripts in this folder.
 
@@ -69,11 +69,11 @@ This stage performs the following:
 ### 4. Building LSH index
 Script for building LSH index is at `zyda_reproduction/4_lsh_indexing/run_lsh_dupes_0.4_all.sh`.
 
-For Zyda we used 40% Jaccard similarity threshold when building our LSH index. Optimal split of minhash signatures can be computed using `zyda/lsh_minhash/compute_optimal_params.py`, which gave 32 bands with a range of 4 for the singature size of 128.
+For Zyda we used 40% Jaccard similarity threshold when building our LSH index. Optimal split of minhash signatures can be computed using `zyda/lsh_minhash/compute_optimal_params.py`, which for our threshold and signature size gave us 32 bands with a range of 4.
 
-This is the most time-consuming and memory-intensive stage. We split it in a parallel job distrubuted among 8 nodes of our HPC cluster, each with 92 physical cores and 2TB of RAM. It took approximately 1 day with a peak RAM consumption of 1.5TB.
+This is the most time-consuming and memory-intensive stage. We split it in a parallel job distrubuted among 8 nodes of our HPC cluster, each with 92 physical cores and 2TB of RAM. It took approximately 2 days with a peak RAM consumption of 1.5TB.
 
-We stripped away our distributed configuration in the script `run_lsh_dupes_0.4_all.sh`. To limit RAM consumption we allow only 2 minhash bands to be processed in parallel by specifying `--bands-parallel 2` flag.
+We stripped away our distributed configuration in the script `run_lsh_dupes_0.4_all.sh`, basically assuming it will be run on one node. To limit RAM consumption we allow only 2 minhash bands to be processed in parallel by specifying `--bands-parallel 2` flag. On one compute node, bands are be split into 16 groups of size 2, and such groups are processed sequentially.
 
 The resultant LSH index is saved in `$DATA_BASE/lsh_0.4/lsh_index-<band index>.pickle` files. We also save all the identified duplicate pairs in `$DATA_BASE/lsh_0.4/dupes/all_pairs-<band index>.txt` files.
 
