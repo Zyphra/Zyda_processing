@@ -1,6 +1,6 @@
 #!/bin/bash
-IN=$DATA_BASE/zyda_0.4/jsonl
-OUT=$DATA_BASE/zyda_0.4/jsonl
+IN=$DATA_BASE/zyda_0.4-final/jsonl
+OUT=$DATA_BASE/zyda_0.4-final/parquet
 
 DATASET=refinedweb
 if test -d $IN/$DATASET; then
