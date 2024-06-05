@@ -2,7 +2,7 @@
 
 NAME=starcoder-languages
 python $REPO_BASE/zyda/src/preprocessing/preprocess.py \
-    --hf-path $DATA_BASE/$NAME \
+    --hf-path $DATA_BASE/raw/$NAME \
     --load-from-disk \
     --num-proc $NUM_PROC \
     --key content \
@@ -12,7 +12,7 @@ python $REPO_BASE/zyda/src/preprocessing/preprocess.py \
 
 NAME=starcoder-github-issues-filtered-structured
 python $REPO_BASE/zyda/src/preprocessing/preprocess.py \
-    --hf-path $DATA_BASE/$NAME \
+    --hf-path $DATA_BASE/raw/$NAME \
     --load-from-disk \
     --num-proc $NUM_PROC \
     --key content \
@@ -22,7 +22,7 @@ python $REPO_BASE/zyda/src/preprocessing/preprocess.py \
 
 NAME=starcoder-jupyter-structured-clean-dedup
 python $REPO_BASE/zyda/src/preprocessing/preprocess.py \
-    --hf-path $DATA_BASE/$NAME \
+    --hf-path $DATA_BASE/raw/$NAME \
     --load-from-disk \
     --num-proc $NUM_PROC \
     --key content \
@@ -32,7 +32,7 @@ python $REPO_BASE/zyda/src/preprocessing/preprocess.py \
 
 NAME=starcoder-git-commits-cleaned
 python $REPO_BASE/zyda/src/preprocessing/preprocess.py \
-    --hf-path $DATA_BASE/$NAME \
+    --hf-path $DATA_BASE/raw/$NAME \
     --load-from-disk \
     --num-proc $NUM_PROC \
     --key content \

@@ -52,4 +52,4 @@ data = datasets.Dataset.from_json(OUTPUT_JSONL, split='train')
 print(data)
 
 print('Saving the dataset...')
-data.save_to_disk(os.path.joing(DATA_BASE, "SlimPajama-HF"))
+data.save_to_disk(os.path.joing(DATA_BASE, "raw/slimpajama"))

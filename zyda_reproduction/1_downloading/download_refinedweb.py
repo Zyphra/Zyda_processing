@@ -12,4 +12,4 @@ data = datasets.load_dataset(
     )
 )
 print(data)
-data.save_to_disk(os.path.join(DATA_BASE, "refinedweb"))
+data.save_to_disk(os.path.join(DATA_BASE, "raw/refinedweb"))

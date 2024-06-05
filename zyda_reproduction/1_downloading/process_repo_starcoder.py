@@ -47,4 +47,4 @@ for key, datas in type2data.items():
 for key, datas in type2data.items():
     print(f"\nSaving {key}")
     conc_dataset = datasets.concatenate_datasets(datas)
-    conc_dataset.save_to_disk(os.path.join(DATA_BASE, f"starcoder-{key}"))
+    conc_dataset.save_to_disk(os.path.join(DATA_BASE, f"raw/starcoder-{key}"))

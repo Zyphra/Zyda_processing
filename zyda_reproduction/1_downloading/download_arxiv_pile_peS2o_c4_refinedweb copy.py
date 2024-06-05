@@ -12,7 +12,7 @@ data = datasets.load_dataset(
     )
 )
 print(data)
-data.save_to_disk(os.path.join(DATA_BASE, "arxiv"))
+data.save_to_disk(os.path.join(DATA_BASE, "raw/arxiv"))
 
 data = datasets.load_dataset(
     "monology/pile-uncopyrighted",
@@ -23,7 +23,7 @@ data = datasets.load_dataset(
     )
 )
 print(data)
-data.save_to_disk(os.path.join(DATA_BASE, "pile-uncopyrighted"))
+data.save_to_disk(os.path.join(DATA_BASE, "raw/pile-uncopyrighted"))
 
 data = datasets.load_dataset(
     "allenai/peS2o",
@@ -35,7 +35,7 @@ data = datasets.load_dataset(
     )
 )
 print(data)
-data.save_to_disk(os.path.join(DATA_BASE, "peS2o"))
+data.save_to_disk(os.path.join(DATA_BASE, "raw/peS2o"))
 
 data = datasets.load_dataset(
     "allenai/c4", "en",
@@ -46,7 +46,7 @@ data = datasets.load_dataset(
     )
 )
 print(data)
-data.save_to_disk(os.path.join(DATA_BASE, "c4-en"))
+data.save_to_disk(os.path.join(DATA_BASE, "raw/c4-en"))
 
 data = datasets.load_dataset(
     "tiiuae/falcon-refinedweb",
@@ -57,4 +57,4 @@ data = datasets.load_dataset(
     )
 )
 print(data)
-data.save_to_disk(os.path.join(DATA_BASE, "refinedweb"))
+data.save_to_disk(os.path.join(DATA_BASE, "raw/refinedweb"))

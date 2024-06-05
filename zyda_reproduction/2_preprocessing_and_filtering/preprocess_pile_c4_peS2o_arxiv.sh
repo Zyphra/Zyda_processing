@@ -2,7 +2,7 @@
 
 NAME=pile-uncopyrighted
 python $REPO_BASE/zyda/src/preprocessing/preprocess_and_filter.py \
-    --hf-path $DATA_BASE/$NAME \
+    --hf-path $DATA_BASE/raw/$NAME \
     --load-from-disk \
     --num-proc $NUM_PROC \
     --key text \
@@ -11,7 +11,7 @@ python $REPO_BASE/zyda/src/preprocessing/preprocess_and_filter.py \
 
 NAME=c4-en
 python $REPO_BASE/zyda/src/preprocessing/preprocess_and_filter.py \
-    --hf-path $DATA_BASE/$NAME \
+    --hf-path $DATA_BASE/raw/$NAME \
     --load-from-disk \
     --num-proc $NUM_PROC \
     --key text \
@@ -20,7 +20,7 @@ python $REPO_BASE/zyda/src/preprocessing/preprocess_and_filter.py \
 
 NAME=peS2o
 python $REPO_BASE/zyda/src/preprocessing/preprocess_and_filter.py \
-    --hf-path $DATA_BASE/$NAME \
+    --hf-path $DATA_BASE/raw/$NAME \
     --load-from-disk \
     --num-proc $NUM_PROC \
     --key text \
@@ -29,7 +29,7 @@ python $REPO_BASE/zyda/src/preprocessing/preprocess_and_filter.py \
 
 NAME=arxiv
 python $REPO_BASE/zyda/src/preprocessing/preprocess_and_filter.py \
-    --hf-path $DATA_BASE/$NAME \
+    --hf-path $DATA_BASE/raw/$NAME \
     --load-from-disk \
     --num-proc $NUM_PROC \
     --key text \
