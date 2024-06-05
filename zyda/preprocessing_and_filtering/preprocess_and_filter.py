@@ -40,11 +40,12 @@ def read_json_file(fname):
         result_dict = json.loads(f.read()) 
     return result_dict["words"]
 
+# Taken from https://arxiv.org/pdf/2309.04662
 WORD_LISTS = {
-    "profanity_word_list.json": read_json_file(os.path.join(REPO_BASE, "zyda/preprocessing/profanity_word_list.json")),
-    "sexual_word_list.json": read_json_file(os.path.join(REPO_BASE, "zyda/preprocessing/sexual_word_list.json")),
-    "zh_pornsignals.json": read_json_file(os.path.join(REPO_BASE, "zyda/preprocessing/zh_pornsignals.json")),
-    "cursed_substrings.json": read_json_file(os.path.join(REPO_BASE, "zyda/preprocessing/cursed_substrings.json")),
+    "profanity_word_list.json": read_json_file(os.path.join(REPO_BASE, "zyda/preprocessing_and_filtering/profanity_word_list.json")),
+    "sexual_word_list.json": read_json_file(os.path.join(REPO_BASE, "zyda/preprocessing_and_filtering/sexual_word_list.json")),
+    "zh_pornsignals.json": read_json_file(os.path.join(REPO_BASE, "zyda/preprocessing_and_filtering/zh_pornsignals.json")),
+    "cursed_substrings.json": read_json_file(os.path.join(REPO_BASE, "zyda/preprocessing_and_filtering/cursed_substrings.json")),
 }
 
 PATTERNS = ["xml", "<?xml version=", "lorem ipsum", "https://", "<", ">", "\":", "www."]

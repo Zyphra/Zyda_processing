@@ -17,7 +17,7 @@ pip install -e .
 
 ## Repository structure
 Folder `zyda` contains source code for the package. It consists of the following subfolders:
-- `preprocessing` - code for preprocessing and filtering the datasets
+- `preprocessing_and_filtering` - code for preprocessing and filtering the datasets
 - `lsh_minhash` - code for computing minhash signatures and building LSH index
 - `connected_components` - code for finding connected components in the graph of duplicates and for identifying which document to keep in every component
 - `utils` - commonly reused code
