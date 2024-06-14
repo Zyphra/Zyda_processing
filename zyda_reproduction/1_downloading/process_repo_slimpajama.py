@@ -3,13 +3,14 @@ import datasets
 from tqdm import tqdm
 import zstandard as zstd
 import io
+from zyda.utils.common import ensure_directory_exists
 
 # Generating Slimpajama jsonl file directly from the repo, since loading Slimpajama from HF repository has a bug
 # that results in doubling the dataset.
 
 REPO_PATH = os.environ.get("SLIMPAJAMA_REPO_PATH")
 DATA_BASE = os.environ.get("DATA_BASE")
-OUTPUT_JSONL = os.path.join(REPO_PATH, "SlimPajama.jsonl")
+OUTPUT_JSONL = os.path.join(DATA_BASE, "SlimPajama.jsonl")
 
 def list_files_in_directory(directory):
     file_list = []
@@ -42,6 +43,8 @@ def combine_jsonl_files(input_folder, output_file):
                         out_f.write(line)
                 pbar.update(1)
 
+
+ensure_directory_exists(OUTPUT_JSONL)
 combine_jsonl_files(
     input_folder=os.path.join(REPO_PATH, "train"),
     output_file=OUTPUT_JSONL,
@@ -52,4 +55,4 @@ data = datasets.Dataset.from_json(OUTPUT_JSONL, split='train')
 print(data)
 
 print('Saving the dataset...')
-data.save_to_disk(os.path.joing(DATA_BASE, "raw/slimpajama"))
+data.save_to_disk(os.path.join(DATA_BASE, "raw/slimpajama"))
