@@ -1,7 +1,7 @@
 #!/bin/bash
 
 NAME=refinedweb
-python $REPO_BASE/zyda/preprocessing_and_filtering/preprocess.py \
+python $REPO_BASE/zyda/preprocessing_and_filtering/preprocess_and_filter.py \
     --hf-path $DATA_BASE/raw/$NAME \
     --load-from-disk \
     --num-proc $NUM_PROC \
