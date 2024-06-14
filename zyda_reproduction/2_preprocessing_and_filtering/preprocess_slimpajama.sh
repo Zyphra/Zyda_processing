@@ -1,6 +1,6 @@
 #!/bin/bash
 
-python $REPO_BASE/zyda/preprocessing_and_filtering/preprocess.py \
+python $REPO_BASE/zyda/preprocessing_and_filtering/preprocess_and_filter.py \
     --hf-path $DATA_BASE/raw/slimpajama \
     --load-from-disk \
     --num-proc $NUM_PROC \
