@@ -77,8 +77,8 @@ The resultant LSH index is saved in `$DATA_BASE/lsh_0.4/lsh_index-<band index>.p
 ### 5. Clustering duplicates using connected components and generating indices of documents to remove
 Script for clustering duplicates using connected components and generating indices of documents to remove is at `zyda_reproduction/5_clustering/run_cc_lsh_0.4_dupes.sh`.
 
-This stage performs clustering of identified duplicated documnt by identifying connected components in a graph, where the nodes are documents and the edges are duplicate pairs. Graph processing is implemented in `zyda/connected_components/generate_connected_components.py`.
-1. It first performs processing of all duplicate pairs text files and generates a set that is saved to `$DATA_BASE/lsh_0.4/dupes/output/cc-set-final.txt`
+This stage performs clustering of identified duplicated documents by identifying connected components in a graph, where the nodes are documents and the edges are duplicate pairs. Graph processing is implemented in `zyda/connected_components/generate_connected_components.py`.
+1. It first performs processing of all duplicate pairs text files (coming from building indices of individual bands) and generates a single set that is saved to `$DATA_BASE/lsh_0.4/dupes/output/cc-set-final.txt`
 2. It uses `networkit` package for building a graph and finding connecting components. It saves the graph at `$DATA_BASE/lsh_0.4/dupes/output/cc-graph.graph`, document-to-node mapper at `$DATA_BASE/lsh_0.4/dupes/output/cc-mapper.pickle`, and connected components with node-to-document reverse mapper at `$DATA_BASE/lsh_0.4/dupes/output/cc.pickle`.
 
 Finally, we generate indices of duplicate documents to remove by sorting every document in a cluster according to a ranking and keeping only the highest ranked one. This is implemented in `zyda/connected_components/generate_indices_to_remove.py`. The resultant dict with a mapping of datasets names to indices to remove is saved in `$DATA_BASE/lsh_0.4/dupes/output/dupes.pickle`. We decided to use the following ranking:

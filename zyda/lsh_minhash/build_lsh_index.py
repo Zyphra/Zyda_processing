@@ -192,7 +192,7 @@ if __name__ == "__main__":
     parser.add_argument("--num-nodes", type=int, default=1, help="Number of nodes for dsitributed processing")
     parser.add_argument("--node-rank", type=int, default=-1, help="Rank of the node")
     parser.add_argument("--bands-parallel", type=int, default=-1, help="Number of bands to be processed in parallel")
-    parser.add_argument("--reader-processes", type=int, default=1, help="Number of reader processes to populate document queues")
+    parser.add_argument("--reader-processes", type=int, default=1, help="Number of reader processes per band to populate document queues")
     parser.add_argument("--log-interval", type=int, default=100_000, help="Interval of logging/updating progress bar")
     args = parser.parse_args()
 
