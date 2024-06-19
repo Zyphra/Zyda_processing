@@ -122,7 +122,7 @@ def generate_pairs(args):
     print()
 
     bands_inds = range(args.bands)
-    bands_splits = [list(x) for x in more_itertools.divide(args.node, bands_inds)]
+    bands_splits = [list(x) for x in more_itertools.divide(args.num_nodes, bands_inds)]
     if args.node_rank > -1:
         bands_splits = [bands_splits[args.node_rank]]
     if args.bands_parallel > 0:
@@ -189,8 +189,8 @@ if __name__ == "__main__":
     parser.add_argument("--lsh-out", type=str, required=True, help="Output pickle file with LSH index")
     parser.add_argument("--range", type=int, required=True, help="Range of LSH index")
     parser.add_argument("--bands", type=int, required=True, help="Number of bands of LSH index")
-    parser.add_argument("--node", type=int, default=1, help="Number of splits of LSH bands")
-    parser.add_argument("--node-rank", type=int, default=-1, help="Rank of the split")
+    parser.add_argument("--num-nodes", type=int, default=1, help="Number of nodes for dsitributed processing")
+    parser.add_argument("--node-rank", type=int, default=-1, help="Rank of the node")
     parser.add_argument("--bands-parallel", type=int, default=-1, help="Number of bands to be processed in parallel")
     parser.add_argument("--reader-processes", type=int, default=1, help="Number of reader processes to populate document queues")
     parser.add_argument("--log-interval", type=int, default=100_000, help="Interval of logging/updating progress bar")
